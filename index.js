@@ -22,6 +22,22 @@ app.get('/data', (req, res) => {
     res.status(200).json({success: true, data: JSON.parse(output)})
 })
 
-
+app.get('/verify', (req,res) => {
+    res.status(200).json({success: true, allow: true})
+})
+app.get('/video/:id', (req,res) => {
+    let id = req.params.id
+    let output = fs.readFileSync('videos.json')
+    let videos = JSON.parse(output)
+    videos.map(video => {
+        if (video.id === id) {
+            return res.status(200).json({success: true, video: video})
+        }
+        else {
+            return res.status(404).json({success: false, message: "Video not found"})
+        }
+    })
+    
+})
 
 app.listen(8000)
