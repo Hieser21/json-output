@@ -36,9 +36,6 @@ app.get('/video/:id', (req,res) => {
         if (video.id === id) {
             return res.status(200).json({success: true, video: video})
         }
-        else {
-            return res.status(404).json({success: false, message: "Video not found"})
-        }
     })
     
 })
