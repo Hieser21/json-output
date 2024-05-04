@@ -25,6 +25,9 @@ app.get('/data', (req, res) => {
 app.get('/verify', (req,res) => {
     res.status(200).json({success: true, allow: true})
 })
+app.get('/userAccess', (req,res) => {
+    res.status(200).json({success: true, allow: true})
+})
 app.get('/video/:id', (req,res) => {
     let id = req.params.id
     let output = fs.readFileSync('videos.json')
